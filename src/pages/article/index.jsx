@@ -5,6 +5,7 @@ import {
     QueryItem,
     Pagination,
     ToolBar,
+    Operator
 } from "@/library/antd";
 import PageContent from '@/layouts/page-content';
 import config from '@/commons/config-hoc';
@@ -32,6 +33,44 @@ export default class Article extends Component {
         { title: '内容', dataIndex: 'content' },
         { title: '点赞数量', dataIndex: 'like' },
         { title: '阅读量', dataIndex: 'collection' },
+        {
+            title: '操作',
+            key: 'operator',
+            render: (text, record) => {
+                const {id, customerNo} = record;
+                const successTip = `删除“${customerNo}”成功！`;
+                const items = [
+                    {
+                        label: '修改',
+                        onClick: () => {
+                            this.handleEdit(id);
+                        },
+                    },
+                    {
+                        label: '删除',
+                        color: 'red',
+                        confirm: {
+                            title: `您确定要删除“${customerNo}”？`,
+                            onConfirm: () => {
+                                this.setState({loading: true});
+                                this.props.ajax
+                                    .del(`/user-center/${id}`, null, {successTip})
+                                    .then(() => this.handleSearch())
+                                    .finally(() => this.setState({loading: false}));
+                            },
+                        },
+                    },
+                    {
+                        label: '详情',
+                        onClick: () => {
+                            console.log('详情');
+                        },
+                    }
+                ];
+
+                return (<Operator items={items}/>);
+            },
+        },
     ];
 
     // TODO 查询条件
@@ -67,6 +106,13 @@ export default class Article extends Component {
             },
         },
     ];
+    /**
+     * 编辑
+     * */
+    handleEdit = () => {
+        console.log('编辑');
+        this.props.history.push('./add-article');
+    }
 
     render() {
         const { dataSource, total, pageNum, pageSize, loading } = this.state;
