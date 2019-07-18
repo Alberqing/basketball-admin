@@ -1,13 +1,10 @@
 import React, {Component} from 'react';
 import {Table} from 'antd';
-import FixBottom from '@/layouts/fix-bottom';
 import {
     QueryBar,
     QueryItem,
-    ToolItem,
     Pagination,
     Operator,
-    ToolBar,
 } from "@/library/antd";
 import PageContent from '@/layouts/page-content';
 import config from '@/commons/config-hoc';
@@ -34,54 +31,28 @@ export default class UserCenterList extends Component {
         [
             {
                 type: 'input',
-                field: 'inMno',
-                label: '用户商编',
+                field: 'name',
+                label: '用户名',
             },
             {
                 type: 'input',
-                field: 'userNo',
-                label: '用户号',
+                field: 'sex',
+                label: '性别',
             },
             {
-                type: 'date-time',
-                field: 'updateTime',
-                label: '最后修改时间',
+                type: 'input',
+                field: 'local',
+                label: '地区',
             },
         ],
     ];
 
-    // TODO 顶部工具条
-    toolItems = [
-        {
-            type: 'primary',
-            text: '添加',
-            icon: 'plus',
-            onClick: () => {
-                // TODO
-            },
-        },
-    ];
-
-    // TODO 底部工具条
-    bottomToolItems = [
-        {
-            type: 'primary',
-            text: '导出',
-            icon: 'export',
-            onClick: () => {
-                // TODO
-            },
-        },
-    ];
-
     columns = [
-        {title: '客户号', dataIndex: 'customerNo'},
-        {title: '客户名称', dataIndex: 'name'},
-        {title: '状态(00', dataIndex: 'state'},
-        {title: '出款开关(', dataIndex: 'wdcFlg'},
-        {title: '入款开关(', dataIndex: 'payFlg'},
-        {title: '创建时间', dataIndex: 'createTime'},
-        {title: '最后修改时间', dataIndex: 'updateTime'},
+        {title: 'openId', dataIndex: 'openId'},
+        {title: '用户昵称', dataIndex: 'name'},
+        {title: '性别', dataIndex: 'sex'},
+        {title: '地区', dataIndex: 'local'},
+        {title: '', dataIndex: 'payFlg'},
         {
             title: '操作',
             key: 'operator',
@@ -90,13 +61,13 @@ export default class UserCenterList extends Component {
                 const successTip = `删除“${customerNo}”成功！`;
                 const items = [
                     {
-                        label: '修改',
+                        label: '点赞文章',
                         onClick: () => {
                             this.handleEdit(id);
                         },
                     },
                     {
-                        label: '删除',
+                        label: '收藏文章',
                         color: 'red',
                         confirm: {
                             title: `您确定要删除“${customerNo}”？`,
@@ -107,6 +78,12 @@ export default class UserCenterList extends Component {
                                     .then(() => this.handleSearch())
                                     .finally(() => this.setState({loading: false}));
                             },
+                        },
+                    },
+                    {
+                        label: '故事列表',
+                        onClick: () => {
+                            this.handleEdit(id);
                         },
                     },
                 ];
@@ -168,8 +145,6 @@ export default class UserCenterList extends Component {
                     />
                 </QueryBar>
 
-                <ToolBar items={this.toolItems}/>
-
                 <Table
                     columns={this.columns}
                     dataSource={dataSource}
@@ -184,9 +159,6 @@ export default class UserCenterList extends Component {
                     onPageNumChange={pageNum => this.setState({pageNum}, this.handleSearch)}
                     onPageSizeChange={pageSize => this.setState({pageSize, pageNum: 1}, this.handleSearch)}
                 />
-                <FixBottom>
-                    <ToolItem items={this.bottomToolItems}/>
-                </FixBottom>
 
                 <UserCenterEdit
                     id={id}
