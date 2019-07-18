@@ -91,8 +91,6 @@ export default class extends Component {
                     <Color/>
                     <Local style={{color: '#fff'}}/>
                 </div>
-                <div styleName="logo"/>
-                <div styleName="note"/>
                 <div styleName="box">
                     <div styleName="header">{local.title}</div>
                     <Form onSubmit={this.handleSubmit}>
