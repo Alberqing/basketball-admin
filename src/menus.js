@@ -8,7 +8,7 @@ export default function getMenus(userId) {
     { key: 'menus', local: 'menus', text: '菜单编辑', icon: 'lock', path: '/menu-permission', order: 1000 },
     { key: 'user-center', local: 'user-center', text: '用户管理', icon: 'user', path: '/user-center', order: 600 },
     { key: 'news', local: 'news', text: '新闻管理中心', icon: 'user', path: '/user-center', order: 600 },
-    { key: 'artical', local: 'artical', text: '文章管理中心', icon: 'user', path: '/user-center', order: 600 },
+    { key: 'artical', local: 'artical', text: '文章管理中心', icon: 'read', path: '/article', order: 600 },
     { key: 'player', local: 'player', text: '球员管理中心', icon: 'user', path: '/user-center', order: 600 },
     { key: 'player-data', local: 'player-data', text: '球员数据管理中心', icon: 'user', path: '/user-center', order: 600 },
     { key: 'team', local: 'team', text: '球队数据管理中心', icon: 'user', path: '/user-center', order: 600 },
