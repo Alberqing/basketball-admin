@@ -8,9 +8,9 @@ export default function getMenus(userId) {
     { key: 'user-center', local: 'user-center', text: '用户管理', icon: 'user', path: '/user-center', order: 600 },
     { key: 'news', local: 'news', text: '新闻管理中心', icon: 'file-text', path: '/news', order: 600 },
     { key: 'artical', local: 'artical', text: '文章管理中心', icon: 'read', path: '/article', order: 600 },
-    { key: 'player', local: 'player', text: '球员管理中心', icon: 'user', path: '/user-center', order: 600 },
-    { key: 'player-data', local: 'player-data', text: '球员数据管理中心', icon: 'user', path: '/user-center', order: 600 },
-    { key: 'team', local: 'team', text: '球队数据管理中心', icon: 'user', path: '/user-center', order: 600 },
+    { key: 'player', local: 'player', text: '球员管理中心', icon: 'user', path: '/player', order: 600 },
+    { key: 'player-data', local: 'player-data', text: '球员数据管理中心', icon: 'idcard', path: '/player-data', order: 600 },
+    { key: 'team', local: 'team', text: '球队数据管理中心', icon: 'team', path: '/team-data', order: 600 },
     { key: '反馈管理', local: 'tickling', text: '反馈管理中心', icon: 'user', path: '/user-center', order: 600 },
     { key: '用户笔记', local: 'user-note', text: '用户笔记管理', icon: 'user', path: '/user-center', order: 600 },
   ]);

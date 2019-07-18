@@ -6,13 +6,13 @@ import { Form, Button, Input, Upload, Icon, message } from 'antd/lib/index';
 import './style.less';
 
 @config({
-    path: '/add-news',
+    path: '/add-player',
     // title: { local: 'add-artical', text: '新增文章', icon: 'read' },
     // breadcrumbs: [{ key: 'add-artical', local: 'add-artical', text: '文章管理中心', icon: 'read' }],
 })
 
 @Form.create()
-export default class AddNews extends Component {
+export default class AddPlayer extends Component {
     state = {
         loading: false,
         htmlContent: '',
@@ -128,15 +128,15 @@ export default class AddNews extends Component {
                     <Icon type="left" />返回
                 </Button>
                 <Form onSubmit={this.handleSubmit} className="login-form">
-                    <Form.Item label='新闻标题' {...formItemLayout}>
-                        {getFieldDecorator('title', {
+                    <Form.Item label='球员姓名' {...formItemLayout}>
+                        {getFieldDecorator('name', {
                             rules: [{ required: true, message: '请输入' }],
                             initialValue: '',
                         })(
                             <Input></Input>
                         )}
                     </Form.Item>
-                    <Form.Item label='新闻图片' {...formItemLayout}>
+                    <Form.Item label='球员照片' {...formItemLayout}>
                         {getFieldDecorator('src', {
                             rules: [{ required: true, message: '请输入图片地址' }],
                             initialValue: '',
@@ -162,15 +162,7 @@ export default class AddNews extends Component {
                             <Input></Input>
                         )}
                     </Form.Item>
-                    <Form.Item label='作者' {...formItemLayout}>
-                        {getFieldDecorator('author', {
-                            rules: [{ required: true, message: '请输入作者' }],
-                            initialValue: '',
-                        })(
-                            <Input></Input>
-                        )}
-                    </Form.Item>
-                    <Form.Item {...formItemLayout} label='新闻内容'>
+                    <Form.Item {...formItemLayout} label='球员简介'>
                         {getFieldDecorator('username', {
                             rules: [{ required: true, message: 'Please input your username!' }],
                         })(
