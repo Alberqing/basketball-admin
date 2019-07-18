@@ -1,6 +1,6 @@
 export default {
     application: {
-        name: 'React Admin',
+        name: 'Liao Ning Basketball',
     },
     ajaxTip: {
         success: 'Success',
